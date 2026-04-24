@@ -1,6 +1,3 @@
-let computerScore = 0;
-let humanScore = 0;
-
 function getComputerChoice() {
     let choice = "";
     switch (Math.floor(Math.random() * 3)) {
@@ -21,7 +18,11 @@ function getHumanChoice() {
     return prompt("Please pick between rock, paper and scissors");
 }
 
-function playRound(humanChoice, computerChoice) {
+function playGame() {
+    let computerScore = 0;
+    let humanScore = 0;
+
+    function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
     let winnerAnnouncement = "";
     let winner = "";
@@ -72,4 +73,22 @@ function playRound(humanChoice, computerChoice) {
     console.log(winnerAnnouncement);
 }
 
-playRound(getHumanChoice(), getComputerChoice());
+    for (let i = 1; i <= 5; i++) {
+        console.log("Round " + (i));
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+
+    console.log("You : " + humanScore + " - Computer : " + computerScore);
+
+    if (humanScore == computerScore) {
+        console.log("It's a tie!");
+    }
+    else if (humanScore > computerScore) {
+        console.log("You win!");
+    }
+    else {
+        console.log("The computer wins!");
+    }
+}
+
+playGame();
